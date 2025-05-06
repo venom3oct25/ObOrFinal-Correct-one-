@@ -31,7 +31,7 @@ Stores the name of driver, their stats, and the code to compare changes for nasc
         public void compare()
         {
             //letters are placehold for old stats
-            int a = 16; int b = 5; int c = 1; int d = 1; int e = 3; int f = 3;
+            int a = 16; int b = 5; int c = 1; 
             if(a < _avgfinish)
             {
                 Console.WriteLine("bad change");

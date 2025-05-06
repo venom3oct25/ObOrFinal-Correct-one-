@@ -30,5 +30,13 @@ namespace ObOrFinal
             Console.WriteLine(final);
             return final;
         }
+        /*Wins abov replacement
+         At Bats
+        Hits
+        Home Runs
+        Hits at bat
+        rns scored
+        Runs batted in
+        stolen bases*/
     }
 }

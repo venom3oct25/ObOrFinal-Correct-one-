@@ -19,11 +19,32 @@ namespace ObOrFinal
 {
     internal class HTMLdata
     {
-        string nascarraw;
-        string baseballraw;
-        string footballraw;
-       #region call methods
-        
+        private string _baseballraw;
+        public string baseballraw
+        {
+            get
+            {
+                return _baseballraw;
+            }
+            set
+            {
+                _baseballraw = value;
+            }
+        }
+        private string _footballraw;
+        public string footballraw
+        {
+            get
+            {
+                return _footballraw;
+            }
+            set
+            {
+                _footballraw = value;
+            }
+        }
+        #region call methods
+
         public static async Task<string> nascarfind(string hatedriver)
         {
             //string url = "z";
@@ -83,7 +104,6 @@ namespace ObOrFinal
                 {
                     plainText = plainText.Substring(0, percentIndex).Trim();
                 }
-            //Console.WriteLine("blah" + plainText.Substring(0, 6));
             if (plainText.Substring(0, 6) == "NASCAR")
             {
                 return "error, nascar not found";
@@ -108,7 +128,6 @@ namespace ObOrFinal
             string plainText = Regex.Replace(html, "\r?\n|<[^>]+?>|/[^/]+?/|{[^}]+?}", " ");
             plainText = System.Net.WebUtility.HtmlDecode(plainText).Trim();
             int index = plainText.IndexOf("Career");
-            //int index = plainText.IndexOf(hatebaseball, StringComparison.OrdinalIgnoreCase);
             if (index >= 0)
             {
                 plainText = plainText.Substring(index).Trim();
@@ -119,14 +138,13 @@ namespace ObOrFinal
                 plainText = plainText.Substring(0, percentIndex).Trim();
             }
             plainText = plainText.Replace("Total Bases AB  For recent years, leaders need 3.1 PA per team game played\">", " ");
-            
-                //plainText = plainText.Replace("Career", " ");
-                //string[] parts = plainText.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-                //return parts[0] + " " + parts[1] + " Points-" + parts[2] + " AvgFin-" + parts[3] + " Races-" + parts[4] + " Wins-" + parts[5] + " Top5-" + parts[6] + " Top10-" + parts[7] + " LapsLead-" + parts[8] + " AvgRating-" + parts[9];
-                string[] parts = plainText.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            plainText = plainText.Replace("SUMMARY", "");
+            plainText = plainText.Replace("Career", "");
+            plainText = plainText.Replace("2024", "");
+            string[] parts = plainText.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
                 plainText = "";
             int takeCount = Math.Min(19, parts.Length);
-            for (int i = 0; i < takeCount; i++)
+            for (int i = 0; i < parts.Length; i++)
             {
                 plainText += " " + parts[i];
             }
@@ -136,15 +154,12 @@ namespace ObOrFinal
             }
             else
             {
+                plainText = plainText.Replace("\t\t \t\t \t \t \t \t\t ", "");
                 return plainText;
             }
-            
-            
-            
-            //plainText = plainText.Replace("Total Bases AB For recent years, leaders need 3.1", " ");
-            
         }
         
+
         public static string footballExtractTextFromHtml(string html, string hatebaseball)
         {//open each name and index until you find the match
             if (html == null)
@@ -171,7 +186,6 @@ namespace ObOrFinal
             {
                 plainText = plainText.Substring(0, percentIndex).Trim();
             }
-
             if (Regex.IsMatch(plainText, @"minimum.*?leader", RegexOptions.IgnoreCase))
             {
                 plainText = Regex.Replace(plainText, @"minimum.*?leader", "", RegexOptions.IgnoreCase).Trim();
@@ -181,14 +195,14 @@ namespace ObOrFinal
             plainText = plainText.Replace("For teams, sack yardage is deducted from this total\">", " ");
             plainText = plainText.Replace("       Fantasy points:   \t\t\t\t\t\t\t\t1 point per 25 yards passing  \t\t\t\t\t\t\t\t4 points per passing touchdown  \t\t\t\t\t\t\t\t-2 points per interception thrown  \t\t\t\t\t\t\t\t1 point per 10 yards rushing > \t\t\t\t\t\t\t\t6 points per TD  \t\t\t\t\t\t\t\t2 points per two-point conversion  \t\t\t\t\t\t\t\t-2 points per fumble lost (est. prior to 1994)\"> ", " ");
             plainText = plainText.Replace(" strong>", "/A");
-            plainText = plainText.Replace("SUMMARY      Career            ", "");
-            plainText = plainText.Replace("SUMMARY     2024     Career", "");
+            plainText = plainText.Replace("SUMMARY", "");
+            plainText = plainText.Replace("Career", "");
+            plainText = plainText.Replace("2024", "");
             plainText = plainText.Replace(". .\">", "");
             //stripping out to just nums and such
             string[] parts = plainText.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
             plainText = "";
-            int takeCount = Math.Min(19, parts.Length);
-            for (int i = 0; i < takeCount; i++)
+            for (int i = 0; i < parts.Length; i++)
             {
                 plainText += " " + parts[i];
             }
@@ -198,20 +212,11 @@ namespace ObOrFinal
             }
             else
             {
+                plainText = plainText.Replace("\t\t \t\t \t \t \t \t\t ", "");
                 return plainText;
             }
-            //testing github
-            //testing github
-            //testing github
-            //testing github
-            //testing github
-            //testing github
-            //testing github
-
-
-
-
-        }
+          }
+       
 
         #endregion
 

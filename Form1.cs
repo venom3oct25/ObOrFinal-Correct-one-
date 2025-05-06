@@ -18,14 +18,16 @@ namespace ObOrFinal
 {
     public partial class Form1 : Form
     {
+        HTMLdata htmldataclass = new HTMLdata();
         public Form1()
         {
             InitializeComponent();
+
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        public void Form1_Load(object sender, EventArgs e)
         {
-            HTMLdata htmldata = new HTMLdata();
+            
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -67,8 +69,8 @@ namespace ObOrFinal
                 
                 
                 string result = await Task.Run(() => HTMLdata.nascarExtractTextFromHtml(html,inputbox.Text));
-                
 
+                
                 curdatabox.Text = result;
                 nascarbutton.Enabled = true;
                 footballbutton.Enabled = true;
@@ -95,7 +97,7 @@ namespace ObOrFinal
                 if (temp.Trim().Split(' ', (char)StringSplitOptions.RemoveEmptyEntries).Length == 2)
                 {
                     string html = await HTMLdata.footballfind(inputbox.Text);
-
+                    htmldataclass.footballraw = html;
                     string result = await Task.Run(() => HTMLdata.footballExtractTextFromHtml(html, inputbox.Text));
 
                     curdatabox.Text = result;
@@ -104,7 +106,7 @@ namespace ObOrFinal
                 {
                     curdatabox.Text = "First and Last name";
                 }
-
+                
                 nascarbutton.Enabled = true;
                 footballbutton.Enabled = true;
                 baseballbutton.Enabled = true;
@@ -118,7 +120,9 @@ namespace ObOrFinal
         private async void baseballbutton_Click(object sender, EventArgs e)
         {
             if (inputbox.Text != "")
-            {
+            {   
+
+
                 nascarbutton.Enabled = false;
                 footballbutton.Enabled = false;
                 baseballbutton.Enabled = false;
@@ -132,7 +136,8 @@ namespace ObOrFinal
                 else {
                     string html = await HTMLdata.baseballfind(inputbox.Text);
                     //Console.WriteLine(html);
-
+                    htmldataclass.baseballraw = html;
+                   // Console.WriteLine(htmldataclass.baseballraw);
                     string result = await Task.Run(() => HTMLdata.baseballExtractTextFromHtml(html, inputbox.Text));
 
 
@@ -151,6 +156,8 @@ namespace ObOrFinal
         private void rawdatabutton_Click(object sender, EventArgs e)
         {
             curdatabox.Text = "raw beef";
+            Console.WriteLine(htmldataclass.baseballraw);
+            Console.WriteLine(htmldataclass.footballraw);
         }
     }
 }

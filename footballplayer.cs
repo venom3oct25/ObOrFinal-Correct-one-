@@ -11,6 +11,11 @@ namespace ObOrFinal
         //https://www.pro-football-reference.com/players/B/BailJo00.htm
         public static string footballlinkmaker(string nameinput)
         {
+            if (nameinput == "David Baas")
+            {
+                return "https://www.pro-football-reference.com/players/B/BaasDa20.htm";
+            }
+            else { }
             string starter = "https://www.pro-football-reference.com/players/";
             string end = "00.htm";
             string final;
@@ -33,6 +38,15 @@ namespace ObOrFinal
             Console.WriteLine(final);
             return final;
         }
-        //asdasd
     }
-}
+        /*
+         games played
+        approx value
+        Receptions
+        recieving Yds
+        Y/R (yards per reception)
+        reciving touchdowns
+        Fantasy Points
+         */
+    }
+
