@@ -12,53 +12,87 @@ namespace ObOrFinal
 
         /*NascarDriver:
 Stores the name of driver, their stats, and the code to compare changes for nascar drivers*/
-        public void fillstats(string hatedriver){
-            Console.WriteLine("WOAH");
-            string pulledtext = Convert.ToString(HTMLdata.nascarfind(hatedriver));
-            Console.WriteLine(pulledtext+ "adad");
-            Console.WriteLine(pulledtext +" ad afbdfjfdojn");
-            Console.WriteLine(pulledtext);
-            Console.WriteLine("double or not");
-            /*string[] parts = pulledtext.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-            _name = parts[0] + " " + parts[1]; // This combines first and last name
+        public string compare(string cur, string past) {
+            //Points: 408 AvgFin: 10.6 Races: 11 Wins: 2 Top5: 7 Top10: 8 LapLead: 596 AvgRate: 98.3 
+            string[] curparts = cur.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            string[] pastparts = past.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            string compared = "";
+            _points = int.Parse(curparts[1]);
+            _races = int.Parse(curparts[5]);
+            _avgfinish = double.Parse(curparts[3]);
+            _wins = int.Parse(curparts[7]);
+            _lapslead = int.Parse(curparts[13]);
+            _top5 = int.Parse(curparts[9]);
+            _top10 = int.Parse(curparts[11]);
+            _avgrate = double.Parse(curparts[15]);
+            if (_points <= int.Parse(pastparts[1]) && _races > int.Parse(pastparts[5]))
+            {
+                compared += "Points Down - ";
 
-            
-            _avgfinish = double.Parse(parts[2]);
-            _races = int.Parse(parts[3]);
-            _wins = int.Parse(parts[4]);
-            _top5 = int.Parse(parts[5]);
-            _top10 = int.Parse(parts[6]);
-            _lapslead = double.Parse(parts[7]);*/
+            }
+            else
+            {
+                compared += "Points Good - ";
+            }
+            if (_avgfinish < double.Parse(pastparts[3]) && _races > int.Parse(pastparts[5]))
+            {
+                compared += "AvgFinish Down - ";
+
+            }
+            else
+            {
+                compared += "AvgFinish Good - ";
+            }
+            if (_avgrate < double.Parse(pastparts[15]) && _races > int.Parse(pastparts[5]))
+            {
+                compared += "AvgRate Down - ";
+
+            }
+            else
+            {
+                compared += "AvgRate Good - ";
+            }
+            if (_wins <= int.Parse(pastparts[7]) && _races > int.Parse(pastparts[5]))
+            {
+                compared += "Wins Down - ";
+
+            }
+            else
+            {
+                compared += "Wins Good - ";
+            }
+            if (_lapslead <= int.Parse(pastparts[13]+25) && _races > int.Parse(pastparts[5]))
+            {
+                compared += "Lap Lead Down - ";
+
+            }
+            else
+            {
+                compared += "Lap Lead Good - ";
+            }
+            if (_top5 <= int.Parse(pastparts[9]) && _races > int.Parse(pastparts[5]))
+            {
+                compared += "Top 5 Down - ";
+
+            }
+            else
+            {
+                compared += "Top 5 Good - ";
+            }
+            if (_top10 <= int.Parse(pastparts[11]) && _races > int.Parse(pastparts[5]))
+            {
+                compared += "Top 10 Down - ";
+
+            }
+            else
+            {
+                compared += "Top 10 Good - ";
+            }
+            return compared;
+
+
         }
-        public void compare()
-        {
-            //letters are placehold for old stats
-            int a = 16; int b = 5; int c = 1; 
-            if(a < _avgfinish)
-            {
-                Console.WriteLine("bad change");
-            }
-            else
-            {
-                Console.WriteLine("Good Change");
-            }
-            if (b > _races)
-            {
-                Console.WriteLine("bad change");
-            }
-            else
-            {
-                Console.WriteLine("Good Change");
-            }
-            if (c > _wins)
-            {
-                Console.WriteLine("bad change");
-            }
-            else
-            {
-                Console.WriteLine("Good Change");
-            }
-        }
+        
         public struct statistic
         {
             public string stored;
@@ -68,31 +102,45 @@ Stores the name of driver, their stats, and the code to compare changes for nasc
                 return $"{stored}: {value}";
             }
         }
-        public void nascarfillstat(string stats)
+        public string nascarfillstats(string stats)
         {
             List<statistic> nascarplayerstats = new List<statistic>();
             string[] parts = stats.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
             _name = parts[0] + parts[1];
-            for (int i = 2; i < parts.Length - 2; i++)
+            for (int i = 2; i < parts.Length; i++)
             {
-                string[] titles = { "Points", "AvgFin", "Races", "Wins", "Top5", "Top10", "LapLead", "AvgRate"};
+                string[] titles = { "Points: ", "AvgFin: ", "Races: ", "Wins: ", "Top5: ", "Top10: ", "LapLead: ", "AvgRate: "};
                 Point p = new Point { X = 10, Y = 20 };
                 statistic tempy = new statistic();
-                tempy.stored = titles[i];
+                tempy.stored = titles[i-2];
 
                 tempy.value = parts[i];//double.Parse(parts[i]);
                 nascarplayerstats.Add(tempy);
             }
             Console.WriteLine(parts[parts.Length - 2] + " " + parts[parts.Length - 1]);
+            string combine = "";
             foreach (statistic cur in nascarplayerstats)
             {
+                combine = combine + cur.stored + cur.value + " ";
                 Console.WriteLine(cur);
             }
+            return combine;
         }
 
         #region Stats
 
-
+        private string _raw;
+        public string raw
+        {
+            get
+            {
+                return _raw;
+            }
+            set
+            {
+                _raw = value;
+            }
+        }
         private int _races;
         public int races
         {
@@ -103,6 +151,18 @@ Stores the name of driver, their stats, and the code to compare changes for nasc
             set
             {
                 _races = value;
+            }
+        }
+        private int _points;
+        public int points
+        {
+            get
+            {
+                return _points;
+            }
+            set
+            {
+                _points = value;
             }
         }
         private int _wins;
@@ -163,6 +223,18 @@ Stores the name of driver, their stats, and the code to compare changes for nasc
             set
             {
                 _avgfinish = value;
+            }
+        }
+        private double _avgrate;
+        public double avgrate
+        {
+            get
+            {
+                return _avgrate;
+            }
+            set
+            {
+                _avgrate = value;
             }
         }
         private string _name;

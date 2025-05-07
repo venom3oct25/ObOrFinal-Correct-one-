@@ -9,6 +9,12 @@ namespace ObOrFinal
 {
     internal class baseballplayer
     {
+        public string compare(string cur, string past)
+        {
+            string compared = "";
+            compared = "Baseball players can have different types of and amount of stats based on position and years played. We were not able to get a function to handle every possible compared automatically. Sorry";
+            return compared;
+        }
         private string _name;
         public string name
         {

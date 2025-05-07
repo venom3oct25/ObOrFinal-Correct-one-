@@ -15,6 +15,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
 using System.Collections;
 using System.Drawing.Drawing2D;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace ObOrFinal
 {
@@ -53,6 +54,7 @@ namespace ObOrFinal
             }
 
         }
+        #region NoCode
         public Form1()
         {
             InitializeComponent();
@@ -62,6 +64,7 @@ namespace ObOrFinal
         public void Form1_Load(object sender, EventArgs e)
         {
             readpast();
+            
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -88,7 +91,15 @@ namespace ObOrFinal
         {
 
         }
+        private void textBox1_TextChanged_1(object sender, EventArgs e)
+        {
 
+        }
+        private void curdatabox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
         private async void nascarbutton_Click(object sender, EventArgs e)
         {
             if (inputbox.Text != "")
@@ -111,10 +122,31 @@ namespace ObOrFinal
 
                 string result = await Task.Run(() => HTMLdata.nascarExtractTextFromHtml(html, nameheld));
 
-
+                result = nascardriver.nascarfillstats(result);
                 curdatabox.Text = result;
-                curdata.Add(nameheld, result);
-                nascarbutton.Enabled = true;
+                if (!curdata.ContainsKey(nameheld))
+                {
+                    curdata.Add(nameheld, result);
+                }
+                if (pastdata.ContainsKey(nameheld))
+                {
+                    pastdatabox.Text = pastdata[nameheld];
+                    string compared = nascardriver.compare(curdata[nameheld], pastdata[nameheld]);
+                    if (hidegoodcheck.Checked == true && compared.Contains("Good"))
+                    {
+                        Changes.Text = "There were changes...";
+                    }
+                    else
+                    {
+                        Changes.Text = compared;
+                    }
+                }
+                else
+                {
+                    pastdatabox.Text = "No data";
+                }
+                    
+                    nascarbutton.Enabled = true;
                 savebut.Enabled = true;
                 pastfilebutton.Enabled = true;
                 
@@ -129,7 +161,7 @@ namespace ObOrFinal
 
         }
 
-        private async void footballbutton_ClickAsync(object sender, EventArgs e)
+        private async void footballbutton_Click(object sender, EventArgs e)
         {
             if (inputbox.Text != "")
             {
@@ -152,10 +184,29 @@ namespace ObOrFinal
                     string html = await HTMLdata.footballfind(nameheld);
                     htmldataclass.footballraw = html;
                     string result = await Task.Run(() => HTMLdata.footballExtractTextFromHtml(html, nameheld));
-
                     curdatabox.Text = result;
-                    curdata.Add(nameheld, result);
-                    footballplayer.footballfillstat(result);
+                    if (!curdata.ContainsKey(nameheld))
+                    {
+                        curdata.Add(nameheld, result);
+                    }
+                    if (pastdata.ContainsKey(nameheld))
+                    {
+                        pastdatabox.Text = pastdata[nameheld];
+                        string compared = footballplayer.compare(curdata[nameheld], pastdata[nameheld]);
+                        footballplayer.footballfillstat(result);
+                        if (hidegoodcheck.Checked == true && compared.Contains("Good"))
+                        {
+                            Changes.Text = compared;
+                        }
+                        else
+                        {
+                            Changes.Text = compared;
+                        }
+                    }
+                    else
+                    {
+                        pastdatabox.Text = "No data";
+                    }
                 }
                 else
                 {
@@ -201,15 +252,31 @@ namespace ObOrFinal
                 else
                 {
                     string html = await HTMLdata.baseballfind(nameheld);
-                    //Console.WriteLine(html);
                     htmldataclass.baseballraw = html;
-                    // Console.WriteLine(htmldataclass.baseballraw);
                     string result = await Task.Run(() => HTMLdata.baseballExtractTextFromHtml(html, nameheld));
-
-
                     curdatabox.Text = result;
-                    curdata.Add(nameheld, result);
-                    baseballplayer.baseballfillstat(result);
+                    if (!curdata.ContainsKey(nameheld))
+                    {
+                        curdata.Add(nameheld, result);
+                    }
+                    if (pastdata.ContainsKey(nameheld))
+                    {
+                        pastdatabox.Text = pastdata[nameheld];
+                        string compared = baseballplayer.compare(curdata[nameheld], pastdata[nameheld]);
+                        baseballplayer.baseballfillstat(result);
+                        if (hidegoodcheck.Checked == true && compared.Contains("Good"))
+                        {
+                            Changes.Text = compared;
+                        }
+                        else
+                        {
+                            Changes.Text = compared;
+                        }
+                    }
+                    else
+                    {
+                        pastdatabox.Text = "No data";
+                    }
                 }
             }
             else
@@ -219,7 +286,6 @@ namespace ObOrFinal
             nascarbutton.Enabled = true;
             savebut.Enabled = true;
             pastfilebutton.Enabled = true;
-            
             footballbutton.Enabled = true;
             baseballbutton.Enabled = true;
         }
@@ -251,10 +317,7 @@ namespace ObOrFinal
             }
         }
 
-        private void curdatabox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void pastfilebutton_Click(object sender, EventArgs e)
         {
@@ -266,9 +329,6 @@ namespace ObOrFinal
             thebigone.Text = bigboy;
         }
 
-        private void textBox1_TextChanged_1(object sender, EventArgs e)
-        {
-            
-        }
+        
     }
 }

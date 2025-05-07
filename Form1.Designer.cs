@@ -63,7 +63,7 @@ namespace ObOrFinal
             this.footballbutton.TabIndex = 1;
             this.footballbutton.Text = "Football";
             this.footballbutton.UseVisualStyleBackColor = true;
-            this.footballbutton.Click += new System.EventHandler(this.footballbutton_ClickAsync);
+            this.footballbutton.Click += new System.EventHandler(this.footballbutton_Click);
             // 
             // baseballbutton
             // 
