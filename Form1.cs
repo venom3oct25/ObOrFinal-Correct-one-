@@ -98,7 +98,7 @@ namespace ObOrFinal
                 baseballbutton.Enabled = false;
                 savebut.Enabled = false;
                 pastfilebutton.Enabled = false;
-                rawdatabutton.Enabled = false;
+               
                 nascardriver nascardriver = new nascardriver();
                 string nameheld = inputbox.Text;
                 nameheld = nameheld.ToLower();
@@ -117,7 +117,7 @@ namespace ObOrFinal
                 nascarbutton.Enabled = true;
                 savebut.Enabled = true;
                 pastfilebutton.Enabled = true;
-                rawdatabutton.Enabled = true;
+                
                 footballbutton.Enabled = true;
                 baseballbutton.Enabled = true;
             }
@@ -139,7 +139,7 @@ namespace ObOrFinal
                 baseballbutton.Enabled = false;
                 savebut.Enabled = false;
                 pastfilebutton.Enabled = false;
-                rawdatabutton.Enabled = false;
+                
                 footballplayer footballplayer = new footballplayer();
                 string nameheld = inputbox.Text;
                 nameheld = nameheld.ToLower();
@@ -165,7 +165,7 @@ namespace ObOrFinal
                 nascarbutton.Enabled = true;
                 savebut.Enabled = true;
                 pastfilebutton.Enabled = true;
-                rawdatabutton.Enabled = true;
+               
                 footballbutton.Enabled = true;
                 baseballbutton.Enabled = true;
             }
@@ -186,7 +186,7 @@ namespace ObOrFinal
                 baseballbutton.Enabled = false;
                 savebut.Enabled = false;
                 pastfilebutton.Enabled = false;
-                rawdatabutton.Enabled = false;
+               
                 baseballplayer baseballplayer = new baseballplayer();
                 string nameheld = inputbox.Text;
                 nameheld = nameheld.ToLower();
@@ -219,18 +219,12 @@ namespace ObOrFinal
             nascarbutton.Enabled = true;
             savebut.Enabled = true;
             pastfilebutton.Enabled = true;
-            rawdatabutton.Enabled = true;
+            
             footballbutton.Enabled = true;
             baseballbutton.Enabled = true;
         }
 
-        private void rawdatabutton_Click(object sender, EventArgs e)
-        {
-            thebigone.Text = "raw beef";
-            thebigone.Text = ;
-            Console.WriteLine(htmldataclass.baseballraw);
-            Console.WriteLine(htmldataclass.footballraw);
-        }
+       
 
         private void savebut_Click(object sender, EventArgs e)
         {
@@ -264,12 +258,17 @@ namespace ObOrFinal
 
         private void pastfilebutton_Click(object sender, EventArgs e)
         {
-
+            string bigboy = "";
+            foreach (var entry in pastdata)
+            {
+                 bigboy = bigboy + ($"Name: {entry.Key}\n Stats: {entry.Value}\n\n").ToString();
+            }
+            thebigone.Text = bigboy;
         }
 
         private void textBox1_TextChanged_1(object sender, EventArgs e)
         {
-
+            
         }
     }
 }

@@ -31,7 +31,6 @@ namespace ObOrFinal
             this.nascarbutton = new System.Windows.Forms.Button();
             this.footballbutton = new System.Windows.Forms.Button();
             this.baseballbutton = new System.Windows.Forms.Button();
-            this.rawdatabutton = new System.Windows.Forms.Button();
             this.pastfilebutton = new System.Windows.Forms.Button();
             this.hidegoodcheck = new System.Windows.Forms.CheckBox();
             this.Programtitle = new System.Windows.Forms.Label();
@@ -77,20 +76,9 @@ namespace ObOrFinal
             this.baseballbutton.UseVisualStyleBackColor = true;
             this.baseballbutton.Click += new System.EventHandler(this.baseballbutton_Click);
             // 
-            // rawdatabutton
-            // 
-            this.rawdatabutton.Location = new System.Drawing.Point(37, 489);
-            this.rawdatabutton.Margin = new System.Windows.Forms.Padding(2);
-            this.rawdatabutton.Name = "rawdatabutton";
-            this.rawdatabutton.Size = new System.Drawing.Size(90, 20);
-            this.rawdatabutton.TabIndex = 3;
-            this.rawdatabutton.Text = "See Raw Data";
-            this.rawdatabutton.UseVisualStyleBackColor = true;
-            this.rawdatabutton.Click += new System.EventHandler(this.rawdatabutton_Click);
-            // 
             // pastfilebutton
             // 
-            this.pastfilebutton.Location = new System.Drawing.Point(207, 489);
+            this.pastfilebutton.Location = new System.Drawing.Point(37, 354);
             this.pastfilebutton.Margin = new System.Windows.Forms.Padding(2);
             this.pastfilebutton.Name = "pastfilebutton";
             this.pastfilebutton.Size = new System.Drawing.Size(90, 20);
@@ -102,7 +90,7 @@ namespace ObOrFinal
             // hidegoodcheck
             // 
             this.hidegoodcheck.AutoSize = true;
-            this.hidegoodcheck.Location = new System.Drawing.Point(291, 381);
+            this.hidegoodcheck.Location = new System.Drawing.Point(37, 333);
             this.hidegoodcheck.Margin = new System.Windows.Forms.Padding(2);
             this.hidegoodcheck.Name = "hidegoodcheck";
             this.hidegoodcheck.Size = new System.Drawing.Size(137, 17);
@@ -180,7 +168,7 @@ namespace ObOrFinal
             // 
             // savebut
             // 
-            this.savebut.Location = new System.Drawing.Point(402, 489);
+            this.savebut.Location = new System.Drawing.Point(160, 354);
             this.savebut.Margin = new System.Windows.Forms.Padding(2);
             this.savebut.Name = "savebut";
             this.savebut.Size = new System.Drawing.Size(90, 20);
@@ -198,7 +186,7 @@ namespace ObOrFinal
             this.thebigone.Multiline = true;
             this.thebigone.Name = "thebigone";
             this.thebigone.ReadOnly = true;
-            this.thebigone.Size = new System.Drawing.Size(945, 498);
+            this.thebigone.Size = new System.Drawing.Size(371, 366);
             this.thebigone.TabIndex = 13;
             this.thebigone.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
             // 
@@ -206,7 +194,7 @@ namespace ObOrFinal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1493, 520);
+            this.ClientSize = new System.Drawing.Size(910, 385);
             this.Controls.Add(this.thebigone);
             this.Controls.Add(this.savebut);
             this.Controls.Add(this.textboxlabel);
@@ -217,7 +205,6 @@ namespace ObOrFinal
             this.Controls.Add(this.Programtitle);
             this.Controls.Add(this.hidegoodcheck);
             this.Controls.Add(this.pastfilebutton);
-            this.Controls.Add(this.rawdatabutton);
             this.Controls.Add(this.baseballbutton);
             this.Controls.Add(this.footballbutton);
             this.Controls.Add(this.nascarbutton);
@@ -235,7 +222,6 @@ namespace ObOrFinal
         private System.Windows.Forms.Button nascarbutton;
         private System.Windows.Forms.Button footballbutton;
         private System.Windows.Forms.Button baseballbutton;
-        private System.Windows.Forms.Button rawdatabutton;
         private System.Windows.Forms.Button pastfilebutton;
         private System.Windows.Forms.CheckBox hidegoodcheck;
         private System.Windows.Forms.Label Programtitle;
