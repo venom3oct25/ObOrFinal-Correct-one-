@@ -19,6 +19,7 @@ namespace ObOrFinal
 {
     internal class HTMLdata
     {
+        #region rawhtml
         private string _baseballraw;
         public string baseballraw
         {
@@ -43,6 +44,19 @@ namespace ObOrFinal
                 _footballraw = value;
             }
         }
+        private string _nascarraw;
+        public string nascarraw
+        {
+            get
+            {
+                return _nascarraw;
+            }
+            set
+            {
+                _nascarraw = value;
+            }
+        }
+        #endregion
         #region call methods
 
         public static async Task<string> nascarfind(string hatedriver)
@@ -86,6 +100,8 @@ namespace ObOrFinal
                 return " ";
             }
         }
+        #endregion
+        #region ExtractMethods
         public static string nascarExtractTextFromHtml(string html, string hatedriver)
         {
                 if (html == null)
@@ -207,8 +223,6 @@ namespace ObOrFinal
             {
                 plainText = plainText.Substring(0, percentIndex).Trim();
             }
-            //plainText = plainText.Replace(hatefootball, "");
-            //stripping out to just nums and such
             plainText = plainText.Replace("\t", "");
             if (!plainText.Contains(hatefootball))
             {
@@ -226,14 +240,9 @@ namespace ObOrFinal
             }
             else
             {
-                /*if ()
-                {
-
-                }*/
                 return plainText;
             }
           }
-        
         #endregion
 
 

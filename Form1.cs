@@ -100,6 +100,7 @@ namespace ObOrFinal
 
         }
         #endregion
+        #region ButtonClicks
         private async void nascarbutton_Click(object sender, EventArgs e)
         {
             if (inputbox.Text != "")
@@ -328,7 +329,7 @@ namespace ObOrFinal
             }
             thebigone.Text = bigboy;
         }
+        #endregion
 
-        
     }
 }

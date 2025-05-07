@@ -9,6 +9,7 @@ namespace ObOrFinal
 {
     internal class baseballplayer
     {
+        #region BaseballMethods
         public string compare(string cur, string past)
         {
             //"Baseball players can have different types of and amount of stats based on position and years played. We were not able to get a function to handle every possible compared automatically. Sorry";
@@ -78,10 +79,10 @@ namespace ObOrFinal
                 return $"{stored}: {value}";
             }
         }
-        //List<statistic> baseballplayerstats = new List<statistic>();
+
 
         public void baseballfillstat(string stats)
-        {//WAR 182.6 AB 8399 H 2873 HR 714 BA .342 R 2174 RBI 2214 SB 123 OBP .474 SLG .690 OPS 1.164 OPS+ 206 Babe Ruth
+        {
 
             List<statistic> baseballplayerstats = new List<statistic>();
             string[] parts = stats.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
@@ -101,18 +102,6 @@ namespace ObOrFinal
                 Console.WriteLine(cur);
             }
         }
-            /*string[] parts = pulledtext.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-            _name = parts[0] + " " + parts[1]; // This combines first and last name
-
-        }
-        /*Wins abov replacement
-         At Bats
-        Hits
-        Home Runs
-        Hits at bat
-        rns scored
-        Runs batted in
-        stolen bases*/
-        }
-    
+        #endregion
     }
+}

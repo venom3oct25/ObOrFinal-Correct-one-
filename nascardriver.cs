@@ -12,6 +12,7 @@ namespace ObOrFinal
 
         /*NascarDriver:
 Stores the name of driver, their stats, and the code to compare changes for nascar drivers*/
+        #region NASCARmethods
         public string compare(string cur, string past) {
             //Points: 408 AvgFin: 10.6 Races: 11 Wins: 2 Top5: 7 Top10: 8 LapLead: 596 AvgRate: 98.3 
             string[] curparts = cur.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
@@ -126,7 +127,7 @@ Stores the name of driver, their stats, and the code to compare changes for nasc
             }
             return combine;
         }
-
+        #endregion
         #region Stats
 
         private string _raw;

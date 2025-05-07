@@ -11,6 +11,7 @@ namespace ObOrFinal
     internal class footballplayer
 
     {
+        #region FootballMethods
         public string compare(string cur, string past)
         {
             //"Football players can have different types of and amount of stats based on position and years played. We were not able to get a function to handle every possible compared automatically. Sorry";
@@ -63,7 +64,6 @@ namespace ObOrFinal
             copy = copy.ToLower();
             string[] parts = copy.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
             string lastname = parts[1];
-            //lastname = (parts[1].Substring(0,1).ToUpper()) + 
             string firtstlet = parts[1].Substring(0, 1).ToUpper();
             string firstletfirst = parts[0].Substring(0, 1).ToUpper();
             int longy = lastname.Length;
@@ -87,7 +87,7 @@ namespace ObOrFinal
                 return $"{stored}: {value}";
             }
         }
-        //List<statistic> baseballplayerstats = new List<statistic>();
+
 
         public void footballfillstat(string stats)
         {
@@ -100,7 +100,7 @@ namespace ObOrFinal
                 statistic tempy = new statistic();
                 tempy.stored = parts[i];
                 i++;
-                tempy.value = parts[i];//double.Parse(parts[i]);
+                tempy.value = parts[i];
                 footballplayerstats.Add(tempy);
             }
             Console.WriteLine(parts[parts.Length - 2] + " " + parts[parts.Length - 1]);
@@ -109,6 +109,7 @@ namespace ObOrFinal
                 Console.WriteLine(cur);
             }
         }
+        #endregion 
     }
 }
 
