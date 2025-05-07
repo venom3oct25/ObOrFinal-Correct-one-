@@ -13,8 +13,27 @@ namespace ObOrFinal
     {
         public string compare(string cur, string past)
         {
+            //"Football players can have different types of and amount of stats based on position and years played. We were not able to get a function to handle every possible compared automatically. Sorry";
             string compared = "";
-            compared = "Football players can have different types of and amount of stats based on position and years played. We were not able to get a function to handle every possible compared automatically. Sorry";
+            double curVal, pastVal;
+            string[] curparts = cur.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            string[] pastparts = past.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            for (int i = 1; i < curparts.Length; i++)
+            {
+                if (double.TryParse(curparts[i], out curVal) && double.TryParse(pastparts[i], out pastVal))
+                {
+                    if (double.Parse(curparts[i]) <= double.Parse(pastparts[i]))
+                    {
+                        compared = compared + "Bad - ";
+                    }
+                    else
+                    {
+                        compared = compared + "Good - ";
+                    }
+                }
+
+                i++;
+            }
             return compared;
         }
         private string _name;

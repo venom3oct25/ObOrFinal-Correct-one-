@@ -196,7 +196,7 @@ namespace ObOrFinal
                         footballplayer.footballfillstat(result);
                         if (hidegoodcheck.Checked == true && compared.Contains("Good"))
                         {
-                            Changes.Text = compared;
+                            Changes.Text = "there were changes";
                         }
                         else
                         {
@@ -266,7 +266,7 @@ namespace ObOrFinal
                         baseballplayer.baseballfillstat(result);
                         if (hidegoodcheck.Checked == true && compared.Contains("Good"))
                         {
-                            Changes.Text = compared;
+                            Changes.Text = "there were changes";
                         }
                         else
                         {

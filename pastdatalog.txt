@@ -1,4 +1,6 @@
-[Jumbo Latham,  WAR 1.6 AB 1431 H 353 HR 0 BA .247 R 209 RBI 101 SB 6 OBP .266 SLG .295 OPS .561 OPS+ 82 Jumbo Latham]
+[Morris Bradshaw,  G 112 AV 14 Rec 90 Yds 1416 Y/A 15.7 TD 12 FantPt 212.0 Morris Bradshaw]
+[Byron Braggs, Byron Braggs]
+[Jumbo Latham, WAR 1.6 AB 1431 H 353 HR 0 BA .247 R 209 RBI 101 SB 6 OBP .266 SLG .295 OPS .561 OPS+ 82 Jumbo Latham]
 [Tom Brady, G 335 AV 326 QBrec 251-82-0 Cmp% 64.3 Yds 89214 Y/A 7.4 TD 649 Int 212 FantPt 5943.4 Tom Brady]
 [David Baas, G 122 AV 41 GS 84 David Baas]
 [Chase Elliott, Points: 338 AvgFin: 11.4 Races: 11 Wins: 0 Top5: 3 Top10: 6 LapLead: 45 AvgRate: 82.8]
