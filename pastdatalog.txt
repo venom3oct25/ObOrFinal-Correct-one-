@@ -1,0 +1,4 @@
+[Peyton Manning,  G 266 AV 271 QBrec 186-79-0 Cmp% 65.3 Yds 71940 Y/A 7.7 TD 539 Int 251 FantPt 4686.3 Peyton Manning]
+[Tom Brady, G 335 AV 326 QBrec 251-82-0 Cmp% 64.3 Yds 89214 Y/A 7.4 TD 649 Int 212 FantPt 5943.4 Tom Brady]
+[Babe Ruth, WAR 182.6 AB 8399 H 2873 HR 714 BA .342 R 2174 RBI 2214 SB 123 OBP .474 SLG .690 OPS 1.164 OPS+ 206 Babe Ruth]
+[Kyle Larson, Kyle Larson 408 10.6 11 2 7 8 596 98.3]

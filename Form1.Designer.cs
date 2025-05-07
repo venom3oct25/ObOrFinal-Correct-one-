@@ -33,7 +33,7 @@ namespace ObOrFinal
             this.baseballbutton = new System.Windows.Forms.Button();
             this.rawdatabutton = new System.Windows.Forms.Button();
             this.pastfilebutton = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.hidegoodcheck = new System.Windows.Forms.CheckBox();
             this.Programtitle = new System.Windows.Forms.Label();
             this.inputbox = new System.Windows.Forms.TextBox();
             this.pastdatabox = new System.Windows.Forms.TextBox();
@@ -41,6 +41,7 @@ namespace ObOrFinal
             this.Changes = new System.Windows.Forms.TextBox();
             this.textboxlabel = new System.Windows.Forms.Label();
             this.savebut = new System.Windows.Forms.Button();
+            this.thebigone = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // nascarbutton
@@ -78,7 +79,7 @@ namespace ObOrFinal
             // 
             // rawdatabutton
             // 
-            this.rawdatabutton.Location = new System.Drawing.Point(190, 265);
+            this.rawdatabutton.Location = new System.Drawing.Point(37, 489);
             this.rawdatabutton.Margin = new System.Windows.Forms.Padding(2);
             this.rawdatabutton.Name = "rawdatabutton";
             this.rawdatabutton.Size = new System.Drawing.Size(90, 20);
@@ -89,24 +90,25 @@ namespace ObOrFinal
             // 
             // pastfilebutton
             // 
-            this.pastfilebutton.Location = new System.Drawing.Point(311, 265);
+            this.pastfilebutton.Location = new System.Drawing.Point(207, 489);
             this.pastfilebutton.Margin = new System.Windows.Forms.Padding(2);
             this.pastfilebutton.Name = "pastfilebutton";
             this.pastfilebutton.Size = new System.Drawing.Size(90, 20);
             this.pastfilebutton.TabIndex = 4;
             this.pastfilebutton.Text = "Print Past File";
             this.pastfilebutton.UseVisualStyleBackColor = true;
+            this.pastfilebutton.Click += new System.EventHandler(this.pastfilebutton_Click);
             // 
-            // checkBox1
+            // hidegoodcheck
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(190, 233);
-            this.checkBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(80, 17);
-            this.checkBox1.TabIndex = 5;
-            this.checkBox1.Text = "checkBox1";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.hidegoodcheck.AutoSize = true;
+            this.hidegoodcheck.Location = new System.Drawing.Point(291, 381);
+            this.hidegoodcheck.Margin = new System.Windows.Forms.Padding(2);
+            this.hidegoodcheck.Name = "hidegoodcheck";
+            this.hidegoodcheck.Size = new System.Drawing.Size(137, 17);
+            this.hidegoodcheck.TabIndex = 5;
+            this.hidegoodcheck.Text = "Hide Postive Changes?";
+            this.hidegoodcheck.UseVisualStyleBackColor = true;
             // 
             // Programtitle
             // 
@@ -132,12 +134,12 @@ namespace ObOrFinal
             // 
             this.pastdatabox.BackColor = System.Drawing.SystemColors.MenuText;
             this.pastdatabox.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.pastdatabox.Location = new System.Drawing.Point(291, 18);
+            this.pastdatabox.Location = new System.Drawing.Point(291, 15);
             this.pastdatabox.Margin = new System.Windows.Forms.Padding(2);
             this.pastdatabox.Multiline = true;
             this.pastdatabox.Name = "pastdatabox";
             this.pastdatabox.ReadOnly = true;
-            this.pastdatabox.Size = new System.Drawing.Size(222, 33);
+            this.pastdatabox.Size = new System.Drawing.Size(222, 106);
             this.pastdatabox.TabIndex = 8;
             this.pastdatabox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
@@ -145,24 +147,25 @@ namespace ObOrFinal
             // 
             this.curdatabox.BackColor = System.Drawing.SystemColors.MenuText;
             this.curdatabox.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.curdatabox.Location = new System.Drawing.Point(291, 73);
+            this.curdatabox.Location = new System.Drawing.Point(291, 142);
             this.curdatabox.Margin = new System.Windows.Forms.Padding(2);
             this.curdatabox.Multiline = true;
             this.curdatabox.Name = "curdatabox";
             this.curdatabox.ReadOnly = true;
             this.curdatabox.Size = new System.Drawing.Size(222, 106);
             this.curdatabox.TabIndex = 9;
+            this.curdatabox.TextChanged += new System.EventHandler(this.curdatabox_TextChanged);
             // 
             // Changes
             // 
             this.Changes.BackColor = System.Drawing.SystemColors.MenuText;
             this.Changes.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.Changes.Location = new System.Drawing.Point(291, 205);
+            this.Changes.Location = new System.Drawing.Point(291, 271);
             this.Changes.Margin = new System.Windows.Forms.Padding(2);
             this.Changes.Multiline = true;
             this.Changes.Name = "Changes";
             this.Changes.ReadOnly = true;
-            this.Changes.Size = new System.Drawing.Size(222, 33);
+            this.Changes.Size = new System.Drawing.Size(222, 106);
             this.Changes.TabIndex = 10;
             // 
             // textboxlabel
@@ -177,7 +180,7 @@ namespace ObOrFinal
             // 
             // savebut
             // 
-            this.savebut.Location = new System.Drawing.Point(432, 265);
+            this.savebut.Location = new System.Drawing.Point(402, 489);
             this.savebut.Margin = new System.Windows.Forms.Padding(2);
             this.savebut.Name = "savebut";
             this.savebut.Size = new System.Drawing.Size(90, 20);
@@ -186,11 +189,25 @@ namespace ObOrFinal
             this.savebut.UseVisualStyleBackColor = true;
             this.savebut.Click += new System.EventHandler(this.savebut_Click);
             // 
+            // thebigone
+            // 
+            this.thebigone.BackColor = System.Drawing.SystemColors.MenuText;
+            this.thebigone.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.thebigone.Location = new System.Drawing.Point(537, 11);
+            this.thebigone.Margin = new System.Windows.Forms.Padding(2);
+            this.thebigone.Multiline = true;
+            this.thebigone.Name = "thebigone";
+            this.thebigone.ReadOnly = true;
+            this.thebigone.Size = new System.Drawing.Size(945, 498);
+            this.thebigone.TabIndex = 13;
+            this.thebigone.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(533, 292);
+            this.ClientSize = new System.Drawing.Size(1493, 520);
+            this.Controls.Add(this.thebigone);
             this.Controls.Add(this.savebut);
             this.Controls.Add(this.textboxlabel);
             this.Controls.Add(this.Changes);
@@ -198,7 +215,7 @@ namespace ObOrFinal
             this.Controls.Add(this.pastdatabox);
             this.Controls.Add(this.inputbox);
             this.Controls.Add(this.Programtitle);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.hidegoodcheck);
             this.Controls.Add(this.pastfilebutton);
             this.Controls.Add(this.rawdatabutton);
             this.Controls.Add(this.baseballbutton);
@@ -220,7 +237,7 @@ namespace ObOrFinal
         private System.Windows.Forms.Button baseballbutton;
         private System.Windows.Forms.Button rawdatabutton;
         private System.Windows.Forms.Button pastfilebutton;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox hidegoodcheck;
         private System.Windows.Forms.Label Programtitle;
         private System.Windows.Forms.TextBox inputbox;
         private System.Windows.Forms.TextBox pastdatabox;
@@ -228,6 +245,7 @@ namespace ObOrFinal
         private System.Windows.Forms.TextBox Changes;
         private System.Windows.Forms.Label textboxlabel;
         private System.Windows.Forms.Button savebut;
+        private System.Windows.Forms.TextBox thebigone;
     }
 }
 
