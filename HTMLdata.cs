@@ -160,14 +160,17 @@ namespace ObOrFinal
         }
         
 
-        public static string footballExtractTextFromHtml(string html, string hatebaseball)
+        public static string footballExtractTextFromHtml(string html, string hatefootball)
         {//open each name and index until you find the match
             if (html == null)
             {
                 return "empty";
             }
+            
+            //cleans name input
             string plainText = Regex.Replace(html, "\r?\n|<[^>]+?>|/[^/]+?/|{[^}]+?}", " ");
             plainText = System.Net.WebUtility.HtmlDecode(plainText).Trim();
+
             int index = 0;
             if (plainText.Contains("SUMMARY     2024     Career"))
             {
@@ -199,7 +202,18 @@ namespace ObOrFinal
             plainText = plainText.Replace("Career", "");
             plainText = plainText.Replace("2024", "");
             plainText = plainText.Replace(". .\">", "");
+             percentIndex = plainText.IndexOf("4/A");
+            if (percentIndex >= 0)
+            {
+                plainText = plainText.Substring(0, percentIndex).Trim();
+            }
+            //plainText = plainText.Replace(hatefootball, "");
             //stripping out to just nums and such
+            plainText = plainText.Replace("\t", "");
+            if (!plainText.Contains(hatefootball))
+            {
+                plainText += (" " + hatefootball);
+            }
             string[] parts = plainText.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
             plainText = "";
             for (int i = 0; i < parts.Length; i++)
@@ -212,12 +226,14 @@ namespace ObOrFinal
             }
             else
             {
-                plainText = plainText.Replace("\t\t \t\t \t \t \t \t\t ", "");
+                /*if ()
+                {
+
+                }*/
                 return plainText;
             }
           }
-       
-
+        
         #endregion
 
 
